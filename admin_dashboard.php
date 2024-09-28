@@ -120,8 +120,12 @@
                         <i class="fas fa-shopping-cart"></i>
                         Create Order
                     </button>
-                    <button class="btn btn-primary" name="UO_btn">
+                    <button class="btn btn-primary" name="AD_btn">
                         <i class="fas fa-arrow-up"></i>
+                        Assign Driver
+                    </button>
+                    <button class="btn btn-primary" name="UO_btn">
+                        <i class="fas fa-edit"></i>
                         Update Orders
                     </button>
                     <div>

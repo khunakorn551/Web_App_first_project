@@ -1,74 +1,28 @@
-<?php
-session_start();
-include '../Models/Delivery.Model.php'; 
-
-if (!isset($_SESSION['key'])) {
-    header("Location: login.php");
-    exit;
-}
-
-if (isset($_POST['alogout'])) {
-    $Signout = new DeliveryModel();
-    $Signout->DriversignOut();
-}
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Update Order</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h1 class="text-center mb-4">Update Order</h1>
-            <form id="updateOrderForm" method="post">
-                <div class="form-group">
-                    <label for="orderId">Enter Order ID:</label>
-                    <input type="text" class="form-control" id="orderId" name="orderId" required />
-                </div>
-                <div class="form-group">
-                    <label for="orderStatus">Select Order Status:</label>
-                    <select class="form-control" id="orderStatus" name="orderStatus">
-                        <option value="processing">Processing</option>
-                        <option value="shipped">Shipped</option>
-                        <option value="delivered">Delivered</option>
-                        <option value="cancelled">Cancelled</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary" name="updateOrder">Submit</button>
-            </form>
-
-            <h2 class="mt-5">Order History</h2>
-            <table class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Client ID</th>
-                    <th>Status</th>
-                    <th>Update Status At</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                // Loop through order history (assuming $orderHistory is an array of arrays)
-                ?>
-                </tbody>
-            </table>
-
-            <form id="logoutForm" method="post">
-                <button type="submit" class="btn btn-danger" name="alogout">Logout</button>
-            </form>
-        </div>
+  <!-- Driver Dashboard -->
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="display-5 fw-bold">Driver Dashboard</h1>
+      </div>
     </div>
-</div>
+    <div class="row">
+      <div class="col-md-12">
+        <a href="driver_update_status.php" class="btn btn-primary btn-lg me-2" id="update-order-status">Update Order Status</a>
+        <a href="view_assigned_order.php" class="btn btn-success btn-lg me-2" id="view-assigned-orders">View Assigned Orders</a>
+        <a href="logout.html" class="btn btn-danger btn-lg" id="logout">Logout</a>
+      </div>
+    </div>
+  </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -40,28 +40,24 @@ $pastOrders = $deliveryController->getClientPastOrders($_SESSION['client_id']);
                 </tbody>
             </table>
             <h1 class="text-center mb-4 mt-5">Past Orders</h1>
-            <?php if ($pastOrders) { ?>
-                <table class="table table-bordered table-striped">
-                    <thead>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Tracking Number</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($pastOrders as $pastOrder) { ?>
                     <tr>
-                        <th>Order ID</th>
-                        <th>Tracking Number</th>
-                        <th>Status</th>
+                        <td><?= $pastOrder['order_id'] ?></td>
+                        <td><?= $pastOrder['tracking_number'] ?></td>
+                        <td><?= $pastOrder['status'] ?></td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($pastOrders as $pastOrder) { ?>
-                        <tr>
-                            <td><?= $pastOrder['order_id'] ?></td>
-                            <td><?= $pastOrder['tracking_number'] ?></td>
-                            <td><?= $pastOrder['status'] ?></td>
-                        </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
-            <?php } else { ?>
-                <p class="text-center">No past orders recorded.</p>
-            <?php } ?>
+                <?php } ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
