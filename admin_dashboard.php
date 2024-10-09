@@ -18,10 +18,7 @@
             // Redirect to create order page
             header("Location: create_order.php");
             exit();
-        } elseif (isset($_POST['AD_btn'])) {
-            // Redirect to assign driver page
-            header("Location: assign_driver.php");
-            exit();
+         
         } elseif (isset($_POST['UO_btn'])) {
             // Redirect to update orders page
             header("Location: update_orders.php");
@@ -120,8 +117,12 @@
                         <i class="fas fa-shopping-cart"></i>
                         Create Order
                     </button>
-                    <button class="btn btn-primary" name="UO_btn">
+                    <button class="btn btn-primary" name="AD_btn">
                         <i class="fas fa-arrow-up"></i>
+                        Assign Driver
+                    </button>
+                    <button class="btn btn-primary" name="UO_btn">
+                        <i class="fas fa-edit"></i>
                         Update Orders
                     </button>
                     <div>

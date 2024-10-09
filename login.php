@@ -1,28 +1,45 @@
 <?php
+session_start();
+include '../Models/Delivery.Model.php';
 
-    session_start();
-    include '../Models/Delivery.Model.php';
+if (isset($_POST['login'])) {
+    // Login logic remains the same
+    $email = $_POST['email'];
+    $pass = $_POST['pass'];
+    $role = $_POST['role'];
 
-    if (isset($_POST['login'])) {
-         $email = $_POST['email'];
-         $pass = $_POST['pass'];
-         $role = $_POST['role'];
+    if (!empty($role) && !empty($email) && !empty($pass)) {
+        $model = new DeliveryModel();
+        $result = $model->signIn($email, $pass, $role);
 
-         if(!empty($role) && !empty($email) && !empty($pass)) {
-            $model = new DeliveryModel();
-            $model->signIn($email, $pass, $role);
-         }else{
-            echo "You need to type something";
-         }
+        if ($result) {
+            if ($role == 'admin') {
+                $_SESSION['admin_id'] = $result['user_id'];
+                $_SESSION['key'] = ['user_id' => $result['user_id']]; 
+                header("Location: admin_dashboard.php");
+                exit;
+            } elseif ($role == 'driver') {
+                $_SESSION['driver_id'] = $result['user_id'];
+                $_SESSION['key'] = ['user_id' => $result['user_id']]; 
+                header("Location: driver_dashboard.php");
+                exit;
+            } elseif ($role == 'client') {
+                $_SESSION['client_id'] = $result['user_id'];
+                $_SESSION['key'] = ['user_id' => $result['user_id']]; 
+                header("Location: client_dashboard.php");
+                exit;
+            }
+        } else {
+            echo "Incorrect email or password";
+        }
     }
+}
 
-    if (isset($_POST['Register'])) {
-        $model = new DeliveryController();
-        $model->register();
-    }
-
-     
-
+if (isset($_POST['Register'])) {
+    // Redirect to registration page
+    header("Location: index.php");
+    exit;
+}
 
 ?>
 
@@ -36,7 +53,7 @@
 
     <style>
         body{
-            background-image: url(rindra_logo.webp);
+            background: linear-gradient(to right, #ff0000, #0000ff); /* Red to blue gradient background */
         }
 
         .register {
@@ -95,8 +112,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <button class="btn btn-primary mt-3" name="login">Login</button>
-                                            <button class="btn btn-primary mt-3" name="Register">Register</button>
-                                        </div>
+                                            <button class="btn btn-primary mt-3" name="Register" onclick="this.form.action='index.php';">Register</button>
+                                        </div >
                                         <div class="col-md-3">
 
                                         </div>
@@ -109,7 +126,7 @@
 
                                 </div>
                                 <div class="col-md-8 text-center">
-                                    <p>Copyright &copy; Rindra Delivery</p>
+                                      <p>&copy; 2024 Delivery Management System</p>
                                 </div>
                                 <div class="col-md-2">
 

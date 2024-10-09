@@ -3,25 +3,25 @@
     include '../Models/Delivery.Model.php';
 
     if (isset($_POST['register'])) {
-         $name = $_POST['name'];
-         $email = $_POST['email'];
-         $pass = $_POST['pass'];
-         $role = $_POST['role'];
-
-
-         if(!empty($role) && !empty($name) && !empty($email) && !empty($pass)) {
+        // Registration logic remains the same
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $pass = $_POST['pass'];
+        $role = $_POST['role'];
+    
+        if (!empty($role) && !empty($name) && !empty($email) && !empty($pass)) {
             $model = new DeliveryModel();
             $model->signUp($name, $email, $pass, $role);
-         }else{
+            header('Location: login.php'); // Redirect to login page after registration
+            exit;
+        } else {
             echo "You need to type something";
-         }
-    } 
-
-    if (isset($_POST['Login'])) {
-        $model = new DeliveryController();
-        $model->login();
+        }
+    } elseif (isset($_POST['Login'])) {
+        // Redirect to login page when "Login" button is clicked
+        header('Location: login.php');
+        exit;
     }
-
 
 ?>
 
@@ -34,8 +34,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
-        body{
-            background-image: url(rindra_logo.webp);
+        body {
+            background: linear-gradient(to right, #ff0000, #0000ff); /* Red to blue gradient background */
         }
 
         .register {
@@ -112,7 +112,7 @@
 
                                 </div>
                                 <div class="col-md-8 text-center">
-                                    <p>Copyright &copy; Rindra Delivery</p>
+                                <p>&copy; 2024 Delivery Management System</p>
                                 </div>
                                 <div class="col-md-2">
 
