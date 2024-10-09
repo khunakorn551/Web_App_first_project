@@ -18,10 +18,7 @@
             // Redirect to create order page
             header("Location: create_order.php");
             exit();
-        } elseif (isset($_POST['AD_btn'])) {
-            // Redirect to assign driver page
-            header("Location: assign_driver.php");
-            exit();
+         
         } elseif (isset($_POST['UO_btn'])) {
             // Redirect to update orders page
             header("Location: update_orders.php");

@@ -10,7 +10,6 @@ if (!isset($_SESSION['client_id'])) {
     exit;
 }
 
-$clientInfo = $deliveryController->getClientInfo($_SESSION['client_id']);
 $orders = $deliveryController->getClientOrders($_SESSION['client_id']);
 $pastOrders = $deliveryController->getClientPastOrders($_SESSION['client_id']);
 
@@ -19,7 +18,7 @@ $pastOrders = $deliveryController->getClientPastOrders($_SESSION['client_id']);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Client Dashboard</title>
+    <title>Client Orders</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -27,24 +26,7 @@ $pastOrders = $deliveryController->getClientPastOrders($_SESSION['client_id']);
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1 class="text-center mb-4">Client Information</h1>
-            <table class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>Client ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><?= $clientInfo['user_id'] ?></td>
-                    <td><?= $clientInfo['name'] ?></td>
-                    <td><?= $clientInfo['email'] ?></td>
-                </tr>
-                </tbody>
-            </table>
-            <h1 class="text-center mb-4 mt-5">Client Orders</h1>
+            <h1 class="text-center mb-4">Client Orders</h1>
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
