@@ -96,38 +96,54 @@
 </head>
 <body>
 
-<div class="header">
-  <h2>Driver Dashboard</h2>
-</div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center mb-4">Update Order</h1>
+            <form id="updateOrderForm" method="post">
+                <div class="form-group">
+                    <label for="orderId">Enter Order ID:</label>
+                    <input type="text" class="form-control" id="orderId" name="orderId" required />
+                </div>
+                <div class="form-group">
+                    <label for="orderStatus">Select Order Status:</label>
+                    <select class="form-control" id="orderStatus" name="orderStatus">
+                        <option value="processing">Processing</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" name="updateOrder">Submit</button>
+            </form>
 
-<div class="sidebar">
-  <h2>Menu</h2>
-  <ul>
-    <li><a href="driver_dashboard.php">Dashboard</a></li>
-    <li><a href="view_assigned_order.php">View Assigned Orders</a></li>
-    <li><a href="delivery_history.php">Delivery History</a></li>
-    <li><a href="login.php" onclick="return confirm('Are you sure you want to logout?')">Logout</a></li>
-  </ul>
-</div>
+            <h2 class="mt-5">Order History</h2>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Client ID</th>
+                    <th>Status</th>
+                    <th>Update Status At</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                // Loop through order history (assuming $orderHistory is an array of arrays)
+                ?>
+                </tbody>
+            </table>
 
-<div class="main-content">
-  <div class="container py-5">
-    <div class="quick-access">
-      <div class="row">
-        <div class="col-md-12">
-          <a href="view_assigned_order.php" class="btn btn-primary btn-lg me-2" id="view-assigned-orders">View Assigned Orders</a>
-          <a href="login.php" class="btn btn-danger btn-lg" id="logout">Logout</a>
+            <form id="logoutForm" method="post">
+                <button type="submit" class="btn btn-danger" name="alogout">Logout</button>
+            </form>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
-<footer>
-  <p>&copy; 2023 Delivery Management System</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

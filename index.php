@@ -112,7 +112,7 @@
 
                                 </div>
                                 <div class="col-md-8 text-center">
-                                <p>&copy; 2023 Delivery Management System</p>
+                                    <p>Copyright &copy; Rindra Delivery</p>
                                 </div>
                                 <div class="col-md-2">
 
